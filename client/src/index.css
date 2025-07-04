@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 6%);
+  --muted-foreground: hsl(0, 0%, 40%);
+  --popover: hsl(0, 0%, 6%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 6%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 10%);
+  --input: hsl(0, 0%, 10%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(0, 0%, 10%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(0, 0%, 10%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --ring: hsl(207, 90%, 54%);
+  --radius: 0.5rem;
+  
+  /* Custom Deploy Colors */
+  --deploy-black: hsl(0, 0%, 0%);
+  --deploy-gray: hsl(0, 0%, 4%);
+  --deploy-border: hsl(0, 0%, 10%);
+  --deploy-text: hsl(0, 0%, 100%);
+  --deploy-muted: hsl(0, 0%, 40%);
+  --deploy-blue: hsl(207, 90%, 54%);
+  --deploy-blue-hover: hsl(207, 90%, 47%);
+  --deploy-success: hsl(142, 76%, 36%);
+  --deploy-warning: hsl(43, 96%, 56%);
+  --deploy-error: hsl(0, 84%, 60%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 6%);
+  --muted-foreground: hsl(0, 0%, 40%);
+  --popover: hsl(0, 0%, 6%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 6%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 10%);
+  --input: hsl(0, 0%, 10%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(0, 0%, 10%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(0, 0%, 10%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --ring: hsl(207, 90%, 54%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: var(--deploy-black);
+    color: var(--deploy-text);
+  }
+}
+
+@layer utilities {
+  .deploy-gradient {
+    background: linear-gradient(135deg, var(--deploy-blue), hsl(277, 85%, 60%));
+  }
+  
+  .deploy-card {
+    background-color: var(--deploy-gray);
+    border: 1px solid var(--deploy-border);
+  }
+  
+  .deploy-card-hover {
+    transition: border-color 0.2s ease;
+  }
+  
+  .deploy-card-hover:hover {
+    border-color: hsl(207, 90%, 54%, 0.5);
+  }
+  
+  .deploy-text-muted {
+    color: var(--deploy-muted);
+  }
+  
+  .deploy-status-ready {
+    color: var(--deploy-success);
+  }
+  
+  .deploy-status-building {
+    color: var(--deploy-warning);
+  }
+  
+  .deploy-status-error {
+    color: var(--deploy-error);
+  }
+}
