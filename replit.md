@@ -96,6 +96,7 @@ The application manages five main entities:
 ## Changelog
 
 - July 04, 2025. Initial setup
+- July 04, 2025. Added Vercel deployment configuration with serverless API routes
 
 ## User Preferences
 

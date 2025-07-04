@@ -134,8 +134,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       setTimeout(async () => {
         await storage.updateDeployment(deployment.id, { status: "success", buildTime: 45 });
         await storage.updateProject(projectId, { 
-          status: "ready", 
-          lastDeployment: new Date() 
+          status: "ready"
         });
         await storage.createActivity({
           projectId,

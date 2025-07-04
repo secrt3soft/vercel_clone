@@ -204,8 +204,12 @@ export class MemStorage implements IStorage {
 
   async createProject(project: InsertProject): Promise<Project> {
     const newProject: Project = {
-      ...project,
       id: this.currentProjectId++,
+      name: project.name,
+      description: project.description ?? null,
+      domain: project.domain,
+      repository: project.repository ?? null,
+      status: project.status ?? "ready",
       createdAt: new Date(),
       lastDeployment: null,
     };
@@ -236,8 +240,12 @@ export class MemStorage implements IStorage {
 
   async createDeployment(deployment: InsertDeployment): Promise<Deployment> {
     const newDeployment: Deployment = {
-      ...deployment,
       id: this.currentDeploymentId++,
+      projectId: deployment.projectId,
+      status: deployment.status ?? "pending",
+      commitHash: deployment.commitHash ?? null,
+      branch: deployment.branch ?? null,
+      buildTime: deployment.buildTime ?? null,
       createdAt: new Date(),
     };
     this.deployments.set(newDeployment.id, newDeployment);
@@ -263,8 +271,12 @@ export class MemStorage implements IStorage {
 
   async createDomain(domain: InsertDomain): Promise<Domain> {
     const newDomain: Domain = {
-      ...domain,
       id: this.currentDomainId++,
+      projectId: domain.projectId,
+      domain: domain.domain,
+      isCustom: domain.isCustom ?? false,
+      sslStatus: domain.sslStatus ?? "pending",
+      status: domain.status ?? "configuring",
       createdAt: new Date(),
     };
     this.domains.set(newDomain.id, newDomain);
@@ -290,8 +302,13 @@ export class MemStorage implements IStorage {
 
   async createRepository(repository: InsertRepository): Promise<Repository> {
     const newRepository: Repository = {
-      ...repository,
       id: this.currentRepositoryId++,
+      name: repository.name,
+      fullName: repository.fullName,
+      description: repository.description ?? null,
+      language: repository.language ?? null,
+      lastUpdated: repository.lastUpdated ?? null,
+      isConnected: repository.isConnected ?? false,
     };
     this.repositories.set(newRepository.id, newRepository);
     return newRepository;
@@ -314,8 +331,11 @@ export class MemStorage implements IStorage {
 
   async createActivity(activity: InsertActivity): Promise<Activity> {
     const newActivity: Activity = {
-      ...activity,
       id: this.currentActivityId++,
+      projectId: activity.projectId ?? null,
+      type: activity.type,
+      message: activity.message,
+      status: activity.status,
       createdAt: new Date(),
     };
     this.activities.set(newActivity.id, newActivity);
